@@ -1,0 +1,15 @@
+fastapi
+uvicorn[standard]
+joblib
+numpy
+pandas
+html5lib
+lxml
+requests
+openpyxl
+matplotlib
+seaborn
+jupyter
+scikit-learn
+pytest
+pytest-html

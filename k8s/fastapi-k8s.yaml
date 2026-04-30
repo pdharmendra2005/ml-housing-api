@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ml-housing-api-deployment
+  labels:
+    app: ml-housing-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ml-housing-api
+  template:
+    metadata:
+      labels:
+        app: ml-housing-api
+    spec:
+      containers:
+        - name: ml-housing-api
+          image: ml-housing-api:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ml-housing-api-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: ml-housing-api
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: ml-housing-api-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: ml-housing-api-deployment
+  minReplicas: 2
+  maxReplicas: 6
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 50

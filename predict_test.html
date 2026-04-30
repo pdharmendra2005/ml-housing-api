@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Predict Test</title>
+</head>
+<body>
+  <h1>ML Model Predict Test</h1>
+  <p>Click the button to call the `/predict` endpoint.</p>
+
+  <button id="predictBtn">Run Prediction</button>
+  <pre id="result" style="background:#f5f5f5;padding:1rem;border:1px solid #ccc;">Result will appear here.</pre>
+
+  <script>
+    document.getElementById('predictBtn').addEventListener('click', () => {
+      fetch('http://127.0.0.1:8000/predict', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          features: [88244.61487, 6.548375433, 8.765481292, 3.36, 25791.99499]
+        })
+      })
+      .then(async response => {
+        const text = await response.text();
+        if (!response.ok) throw new Error(text || response.statusText);
+        return JSON.parse(text);
+      })
+      .then(data => {
+        document.getElementById('result').textContent = JSON.stringify(data, null, 2);
+      })
+      .catch(error => {
+        document.getElementById('result').textContent = 'Error:\n' + error;
+      });
+    });
+  </script>
+</body>
+</html>
