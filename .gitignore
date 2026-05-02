@@ -3,3 +3,7 @@ myvenv/
 __pycache__/
 *.pyc
 .pytest_cache/
+.vscode/
+.env
+.env.*
+*.log
