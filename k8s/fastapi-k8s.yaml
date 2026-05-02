@@ -16,8 +16,8 @@ spec:
     spec:
       containers:
         - name: ml-housing-api
-          image: ml-housing-api:latest
-          imagePullPolicy: IfNotPresent
+          image: pdharmendra2005/ml-housing-api:global
+          imagePullPolicy: Always
           ports:
             - containerPort: 80
           resources:
