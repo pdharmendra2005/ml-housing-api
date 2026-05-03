@@ -64,7 +64,7 @@ The CI workflow now also builds a Docker image and pushes it to Docker Hub so th
 
 ### Required GitHub secrets
 
-- `pdharmendra2005` — your Docker Hub username
-- `Shipbourne@3600` — your Docker Hub access token or password
+- `DOCKERHUB_USERNAME` — your Docker Hub username
+- `DOCKERHUB_PASSWORD` — your Docker Hub access token or password
 
 Set these secrets in your repository before running the workflow.
