@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: ["main"]
+    branches: ["main", "global-image"]
   pull_request:
-    branches: ["main"]
+    branches: ["main", "global-image"]
   workflow_dispatch:
 
 jobs:
@@ -34,7 +34,7 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     needs: test
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/global-image')
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
