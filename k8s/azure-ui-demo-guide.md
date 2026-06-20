@@ -207,5 +207,3 @@ kubectl logs -f deployment/ml-housing-api-deployment
 - ✅ Auto-scaling configured
 - ✅ Model predictions working
 
-**Demo Time**: ~15-20 minutes
-**Cost**: Minimal (few dollars for demo duration)
