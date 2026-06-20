@@ -53,4 +53,5 @@ jobs:
           push: true
           tags: |
             docker.io/${{ secrets.DOCKERHUB_USERNAME }}/ml-housing-api:latest
+            docker.io/${{ secrets.DOCKERHUB_USERNAME }}/ml-housing-api:withmyvenv
             docker.io/${{ secrets.DOCKERHUB_USERNAME }}/ml-housing-api:${{ github.sha }}
