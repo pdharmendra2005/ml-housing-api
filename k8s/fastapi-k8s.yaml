@@ -16,17 +16,17 @@ spec:
     spec:
       containers:
         - name: ml-housing-api
-          image: pdharmendra2005/ml-housing-api:global
+          image: pdharmendra2005/ml-housing-api:withmyvenv
           imagePullPolicy: Always
           ports:
             - containerPort: 80
           resources:
             requests:
               cpu: "250m"
-              memory: "256Mi"
+              memory: "512Mi"
             limits:
               cpu: "500m"
-              memory: "512Mi"
+              memory: "1Gi"
 ---
 apiVersion: v1
 kind: Service
